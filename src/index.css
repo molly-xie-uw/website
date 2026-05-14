@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-matcha-50: #f1f8e9;
+  --color-matcha-100: #dcedc8;
+  --color-matcha-200: #c5e1a5;
+  --color-matcha-300: #aed581;
+  --color-matcha-400: #9ccc65;
+  --color-matcha-500: #8bc34a;
+  --color-matcha-600: #7cb342;
+  --color-matcha-700: #689f38;
+  --color-matcha-800: #558b2f;
+  --color-matcha-900: #33691e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-matcha-200;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 px-6 sm:px-12 lg:px-24;
+  }
+  
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm rounded-2xl transition-all duration-300;
+  }
+}
