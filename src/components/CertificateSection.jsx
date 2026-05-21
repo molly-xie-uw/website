@@ -1,8 +1,8 @@
 const credentials = [
   {
     title: 'SOA Exam P',
-    meta: 'Society of Actuaries · Preparing',
-    description: 'Probability foundations for actuarial science, risk, and quantitative reasoning.',
+    meta: 'Society of Actuaries · Passed',
+    description: 'Passed the SOA preliminary exam covering probability foundations for actuarial science, risk, and quantitative reasoning.',
   },
   {
     title: "University of Waterloo President's Scholarship of Distinction",
