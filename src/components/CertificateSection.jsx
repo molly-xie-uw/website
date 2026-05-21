@@ -1,13 +1,13 @@
 const credentials = [
   {
-    title: 'SOA Exam P',
-    meta: 'Society of Actuaries · Passed',
-    description: 'Passed the SOA preliminary exam covering probability foundations for actuarial science, risk, and quantitative reasoning.',
+    title: 'Exam P (Probability)',
+    issuer: 'Society of Actuaries',
+    issued: 'Issued May 2026',
   },
   {
-    title: "University of Waterloo President's Scholarship of Distinction",
-    meta: 'University of Waterloo',
-    description: 'Awarded to students admitted with an admission average of 95% or above.',
+    title: "President's Scholarship of Distinction",
+    issuer: 'University of Waterloo',
+    issued: 'Awarded for an admission average of 95% or above',
   },
 ];
 
@@ -30,12 +30,18 @@ export default function CertificateSection() {
               key={item.title}
               className="glass-card p-6 border border-slate-100 bg-white transition duration-200 hover:-translate-y-0.5 hover:border-matcha-400 hover:shadow-md"
             >
-              <div className="mb-4 h-1.5 w-12 rounded-full bg-matcha-600" />
-              <h3 className="font-display text-xl font-bold leading-snug text-slate-800">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm font-semibold text-matcha-700">{item.meta}</p>
-              <p className="mt-4 text-sm leading-6 text-slate-600">{item.description}</p>
+              <div className="flex gap-5">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-matcha-700 text-white shadow-sm">
+                  <span className="text-xl font-bold">{item.title.startsWith('Exam') ? 'P' : 'UW'}</span>
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold leading-snug text-slate-800">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-lg leading-snug text-slate-800">{item.issuer}</p>
+                  <p className="mt-2 text-base text-slate-500">{item.issued}</p>
+                </div>
+              </div>
             </article>
           ))}
         </div>

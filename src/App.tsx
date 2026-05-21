@@ -8,7 +8,6 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  FileText, 
   Download, 
   ExternalLink, 
   ChevronRight, 
@@ -191,7 +190,6 @@ const Navbar = ({
 };
 
 export default function App() {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [themeMode, setThemeMode] = useState<ThemeMode>('auto');
   const [activeTheme, setActiveTheme] = useState<ActiveTheme>(getAutoTheme);
 
@@ -333,12 +331,6 @@ export default function App() {
             </h2>
 
             <div className="flex flex-wrap gap-4 mt-10">
-              <button 
-                onClick={() => setIsResumeOpen(true)}
-                className="inline-flex items-center gap-2 bg-matcha-600 hover:bg-matcha-700 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-md shadow-matcha-200 cursor-pointer"
-              >
-                <FileText className="w-4 h-4" /> View Resume
-              </button>
               <a 
                 href="/resume.pdf" 
                 download
@@ -573,102 +565,6 @@ export default function App() {
         </p>
       </footer>
 
-      <AnimatePresence>
-        {isResumeOpen && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
-            onClick={() => setIsResumeOpen(false)}
-          >
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="bg-white w-full max-w-4xl h-[85vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col"
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-matcha-500 rounded-xl flex items-center justify-center text-white">
-                    <FileText className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-slate-800">Molly_Xie_Resume.pdf</h3>
-                    <p className="text-xs text-slate-400">Web Preview</p>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => setIsResumeOpen(false)}
-                  className="p-2 hover:bg-slate-200 rounded-lg transition-colors text-slate-500"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              
-              <div className="flex-grow overflow-y-auto p-12 bg-white">
-                {/* Simulated Paper Resume */}
-                <div className="max-w-[800px] mx-auto bg-white p-8 md:p-16 border border-slate-100 shadow-sm rounded-lg">
-                  <header className="border-b-2 border-slate-900 pb-6 mb-10 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-[0.2em] text-slate-900 mb-4">Molly Xie</h1>
-                    <div className="text-sm text-slate-600 flex flex-wrap justify-center gap-x-6 gap-y-2">
-                       <span className="flex items-center gap-1.5"><Mail className="w-4 h-4"/> z95xie@uwaterloo.ca</span>
-                       <span className="flex items-center gap-1.5"><Linkedin className="w-4 h-4"/> linkedin.com/in/molly-xie-uw</span>
-                       <span className="flex items-center gap-1.5"><Github className="w-4 h-4"/> github.com/molly-xie-uw</span>
-                    </div>
-                  </header>
-                  
-                  <div className="grid gap-10">
-                    <section>
-                      <h2 className="text-lg font-bold uppercase tracking-widest text-slate-900 border-b-2 border-slate-900 mb-6 pb-2">Education</h2>
-                      <div className="flex justify-between items-start mb-2 font-bold text-slate-900">
-                        <span>University of Waterloo</span>
-                        <span>Waterloo, ON</span>
-                      </div>
-                      <div className="flex justify-between items-start italic text-slate-600 text-sm">
-                        <span>Bachelor of Honours Mathematics (Co-op)</span>
-                        <span>May 2024 – Present</span>
-                      </div>
-                      <p className="text-sm mt-1">Average: <span className="font-semibold">86.3/100</span></p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-lg font-bold uppercase tracking-widest text-slate-900 border-b-2 border-slate-900 mb-6 pb-2">Technical Skills</h2>
-                      <div className="grid gap-2 text-sm leading-relaxed">
-                        <p><span className="font-bold">Languages:</span> Python, C, SQL, R</p>
-                        <p><span className="font-bold">Web & Development:</span> React, Vite, Tailwind CSS, Express, Firebase, Streamlit</p>
-                        <p><span className="font-bold">Data & Analysis:</span> Data Collection, Data Analysis, Statistical Reasoning, Exploratory Data Analysis (EDA), Excel</p>
-                        <p><span className="font-bold">Tools & Technologies:</span> Git, GitHub, Linux, VS Code</p>
-                      </div>
-                    </section>
-
-                    <section>
-                      <h2 className="text-lg font-bold uppercase tracking-widest text-slate-900 border-b-2 border-slate-900 mb-6 pb-2">Selected Projects</h2>
-                      <div className="space-y-6">
-                        <div>
-                          <div className="flex justify-between font-bold text-slate-900 text-sm">
-                            <span>MatchaMatch | React, Vite, Tailwind CSS, Express, Firebase</span>
-                            <span>Apr 2026</span>
-                          </div>
-                          <ul className="list-disc ml-5 text-sm text-slate-600 mt-2 space-y-1">
-                            <li>Built a swipe-based platform for students to discover mentors and career opportunities.</li>
-                            <li>Implemented real-time matching and messaging using Firebase Firestore.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-
-                  <p className="text-center text-slate-300 text-[10px] mt-24 italic">
-                    This is a web preview. Please use the "Download" button for the official PDF.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
