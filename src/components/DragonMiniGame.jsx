@@ -2,16 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import DragonMascot from './DragonMascot.jsx';
 
 const skillItems = [
-  { name: 'Python', description: 'Data analysis, Streamlit apps, and quick prototyping.', tag: 'SleepMatch' },
-  { name: 'C', description: 'Memory, pointers, and precise low-level problem solving.', tag: 'Coursework' },
-  { name: 'SQL', description: 'Querying structured data and shaping useful summaries.', tag: 'Data work' },
-  { name: 'React', description: 'Reusable UI components for polished web experiences.', tag: 'Portfolio' },
-  { name: 'Streamlit', description: 'Turning Python analysis into interactive tools quickly.', tag: 'SleepMatch' },
-  { name: 'Firebase', description: 'Auth, realtime data, and backend features for apps.', tag: 'MatchaMatch' },
-  { name: 'Git', description: 'Version control and collaborative project workflow.', tag: 'Projects' },
-  { name: 'Data Analysis', description: 'Finding patterns, testing assumptions, and explaining results.', tag: 'Research' },
-  { name: 'SOA Exam P', description: 'Probability foundations for actuarial and risk reasoning.', tag: 'Credential' },
-  { name: 'Responsible AI', description: 'Evaluating AI systems with context, care, and tradeoffs.', tag: 'Interest' },
+  { name: 'Python', short: 'Py', description: 'Data analysis, Streamlit apps, and quick prototyping.', tag: 'SleepMatch' },
+  { name: 'C', short: 'C', description: 'Memory, pointers, and precise low-level problem solving.', tag: 'Coursework' },
+  { name: 'SQL', short: 'SQL', description: 'Querying structured data and shaping useful summaries.', tag: 'Data work' },
+  { name: 'React', short: 'Re', description: 'Reusable UI components for polished web experiences.', tag: 'Portfolio' },
+  { name: 'Streamlit', short: 'St', description: 'Turning Python analysis into interactive tools quickly.', tag: 'SleepMatch' },
+  { name: 'Firebase', short: 'Fi', description: 'Auth, realtime data, and backend features for apps.', tag: 'MatchaMatch' },
+  { name: 'Git', short: 'Gi', description: 'Version control and collaborative project workflow.', tag: 'Projects' },
+  { name: 'Data Analysis', short: 'Da', description: 'Finding patterns, testing assumptions, and explaining results.', tag: 'Research' },
+  { name: 'SOA Exam P', short: 'SO', description: 'Probability foundations for actuarial and risk reasoning.', tag: 'Credential' },
+  { name: 'Responsible AI', short: 'AI', description: 'Evaluating AI systems with context, care, and tradeoffs.', tag: 'Interest' },
 ];
 
 const prefersReducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -149,17 +149,17 @@ export default function DragonMiniGame() {
     return () => cancelAnimationFrame(frameRef.current);
   }, [message]);
 
-  const currentSkill = skillItems.find((skill) => collected.includes(skill.name));
+  const currentSkill = skillItems.find((skill) => skill.name === collected[collected.length - 1]);
   const dragonState = status === 'over' ? 'hit' : velocity < -1 ? 'rise' : velocity > 2 ? 'descend' : collected.length ? 'glide' : 'idle';
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-bold text-slate-800">Dragon Run</p>
-          <p className="text-xs text-slate-500">Space / click / tap = float upward</p>
+          <p className="text-2xl font-bold text-[#FFFDF8]">Dragon Run</p>
+          <p className="mt-1 text-lg text-[#d7e2cf]">Space / click / tap = float upward</p>
         </div>
-        <button type="button" onClick={restart} className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-matcha-400 hover:text-matcha-700">
+        <button type="button" onClick={restart} className="rounded-2xl border border-[#FFFDF8]/20 bg-[#40483F] px-6 py-3 text-lg font-semibold text-[#FFFDF8] transition hover:border-[#A9B8A0] hover:bg-[#4b554a]">
           Restart
         </button>
       </div>
@@ -168,37 +168,37 @@ export default function DragonMiniGame() {
         type="button"
         onClick={floatUp}
         onPointerDown={floatUp}
-        className="relative h-[310px] w-full overflow-hidden rounded-3xl border border-slate-200 bg-[#F6F1E7] text-left shadow-inner focus:outline-none focus:ring-2 focus:ring-matcha-500"
+        className="relative h-[360px] w-full overflow-hidden rounded-[2rem] border-4 border-[#A9B8A0] bg-[#F6F1E7] text-left shadow-[inset_0_2px_16px_rgba(64,72,63,0.12)] focus:outline-none focus:ring-2 focus:ring-[#A9B8A0]"
         aria-label="Dragon Run game area. Press Space or tap to float upward."
       >
-        <div className="absolute left-5 top-5 z-20 rounded-full bg-[#FFFDF8]/85 px-4 py-2 text-sm font-semibold text-[#40483F] shadow-sm">
+        <div className="absolute left-7 top-7 z-20 rounded-full bg-[#FFFDF8]/95 px-6 py-3 text-xl font-bold text-[#40483F] shadow-md">
           {collected.length} / {skillItems.length} skills explored
         </div>
-        <div className="absolute left-5 top-16 z-20 h-2 w-36 overflow-hidden rounded-full bg-[#CFC3B0]/60">
+        <div className="absolute left-7 top-24 z-20 h-3 w-52 overflow-hidden rounded-full bg-[#CFC3B0]/60">
           <div className="h-full rounded-full bg-[#6F8A72] transition-all" style={{ width: `${(collected.length / skillItems.length) * 100}%` }} />
         </div>
-        <p className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 text-xs font-medium text-[#6b7168]">Press space or tap to glide</p>
+        <p className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2 text-lg font-semibold text-[#6b7168]">Press space or tap to glide</p>
 
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#A9B8A0]/20 to-transparent" />
-        <div className="absolute bottom-8 left-0 h-px w-full bg-[#CFC3B0]/60" />
+        <div className="absolute bottom-10 left-0 h-px w-full bg-[#CFC3B0]/75" />
 
-        <div className="absolute left-[62px] z-10 h-20 w-28 transition-transform" style={{ top: dragonY }}>
-          <DragonMascot state={dragonState} className="h-20 w-28" />
+        <div className="absolute left-[64px] z-10 h-24 w-32 transition-transform" style={{ top: dragonY }}>
+          <DragonMascot state={dragonState} className="h-24 w-32" />
         </div>
 
         {objects.map((object) => {
           if (object.type === 'skill') {
             if (object.collected) return null;
             return (
-              <div key={object.id} className="absolute flex h-10 w-10 items-center justify-center rounded-full border border-[#CFC3B0] bg-[#FFFDF8] text-xs font-bold text-[#6F8A72] shadow-sm" style={{ left: object.x, top: object.y }}>
-                {object.skill.name.slice(0, 2)}
+              <div key={object.id} className="absolute flex h-14 w-14 items-center justify-center rounded-full border border-[#CFC3B0] bg-[#FFFDF8] text-lg font-bold text-[#6F8A72] shadow-md" style={{ left: object.x, top: object.y }}>
+                {object.skill.short}
               </div>
             );
           }
           return object.type === 'cloud' ? (
-            <Cloud key={object.id} className="absolute h-12 w-20 opacity-80" style={{ left: object.x, top: object.y }} />
+            <Cloud key={object.id} className="absolute h-16 w-28 opacity-85" style={{ left: object.x, top: object.y }} />
           ) : (
-            <WindSwirl key={object.id} className="absolute h-12 w-20 opacity-70" style={{ left: object.x, top: object.y }} />
+            <WindSwirl key={object.id} className="absolute h-16 w-28 opacity-75" style={{ left: object.x, top: object.y }} />
           );
         })}
 
@@ -214,18 +214,18 @@ export default function DragonMiniGame() {
         ) : null}
       </button>
 
-      <div className="grid gap-3 md:grid-cols-[1fr_1.4fr]">
-        <div className="rounded-2xl border border-slate-100 bg-white p-4">
-          <p className="text-sm font-semibold text-slate-800">{message}</p>
+      <div className="grid gap-4 md:grid-cols-[1fr_1.4fr]">
+        <div className="rounded-3xl border border-[#FFFDF8]/20 bg-[#40483F] p-6 text-[#FFFDF8]">
+          <p className="text-xl font-bold text-[#FFFDF8]">{message}</p>
           {currentSkill ? (
-            <p className="mt-2 text-sm text-slate-600">{currentSkill.description} <span className="font-semibold text-matcha-700">Related: {currentSkill.tag}</span></p>
+            <p className="mt-4 text-lg leading-8 text-[#FFFDF8]">{currentSkill.description} <span className="font-bold text-[#d7e2cf]">Related: {currentSkill.tag}</span></p>
           ) : (
-            <p className="mt-2 text-sm text-slate-500">Collect a floating skill icon to reveal a checkpoint card.</p>
+            <p className="mt-4 text-lg leading-8 text-[#d7e2cf]">Collect a floating skill icon to reveal a checkpoint card.</p>
           )}
         </div>
-        <div className="flex flex-wrap gap-2 rounded-2xl border border-slate-100 bg-white p-4">
+        <div className="flex flex-wrap gap-3 rounded-3xl border border-[#FFFDF8]/20 bg-[#40483F] p-6">
           {skillItems.map((skill) => (
-            <span key={skill.name} className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${collected.includes(skill.name) ? 'border-matcha-500 bg-matcha-100 text-matcha-800' : 'border-slate-200 text-slate-500'}`}>
+            <span key={skill.name} className={`rounded-full border px-5 py-2 text-lg font-bold transition ${collected.includes(skill.name) ? 'border-[#A9B8A0] bg-[#6F8A72]/40 text-[#FFFDF8]' : 'border-[#FFFDF8]/20 text-[#d7e2cf]'}`}>
               {skill.name}
             </span>
           ))}
