@@ -11,19 +11,19 @@ export default function SkillsSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-matcha-700">Skills</p>
-            <h2 className="font-display text-3xl font-bold text-slate-800 md:text-4xl">Skills & Tools</h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600 md:text-base">A practical toolkit across software, data, and quantitative problem solving.</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#6F8A72]">Skills</p>
+            <h2 className="font-display text-3xl font-bold text-[#40483F] md:text-4xl">Skills & Tools</h2>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#5f6a5d] md:text-base">A practical toolkit across software, data, and quantitative problem solving.</p>
           </div>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((group) => (
-            <article key={group.category} className="glass-card p-6 border-b-4 border-b-matcha-400">
-              <h3 className="font-display text-lg font-bold text-slate-800">{group.category}</h3>
+            <article key={group.category} className="rounded-2xl border border-[#CFC3B0]/70 bg-[#FFFDF8] p-6 shadow-[0_14px_34px_rgba(64,72,63,0.10)] transition duration-200 hover:-translate-y-0.5 hover:border-[#A9B8A0]">
+              <h3 className="font-display text-lg font-bold text-[#40483F]">{group.category}</h3>
               <div className="mt-5 flex flex-wrap gap-2">
                 {group.items.map((skill) => (
-                  <span key={skill} className="rounded-lg border border-slate-100 bg-white px-3 py-1 text-sm font-medium text-slate-600">
+                  <span key={skill} className="rounded-lg border border-[#CFC3B0]/60 bg-[#F6F1E7] px-3 py-1 text-sm font-medium text-[#40483F]">
                     {skill}
                   </span>
                 ))}
