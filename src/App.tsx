@@ -21,7 +21,10 @@ import {
   Terminal,
   Layers,
   Menu,
-  X
+  X,
+  Moon,
+  Sun,
+  MonitorCog
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import cscLogo from './assets/csc-logo.png';
@@ -55,6 +58,21 @@ interface InvolvementItem {
   abbr: string;
 }
 
+type ThemeMode = 'auto' | 'light' | 'dark';
+type ActiveTheme = 'light' | 'dark';
+
+const getAutoTheme = (): ActiveTheme => {
+  const now = new Date();
+  const month = now.getMonth();
+  const currentHour = now.getHours() + now.getMinutes() / 60;
+  const sunriseByMonth = [7.8, 7.3, 7.1, 6.6, 5.9, 5.6, 5.8, 6.3, 6.8, 7.4, 7.1, 7.7];
+  const sunsetByMonth = [17.0, 17.7, 18.7, 20.0, 20.7, 21.0, 20.8, 20.1, 19.2, 18.2, 16.9, 16.7];
+
+  return currentHour >= sunsetByMonth[month] || currentHour < sunriseByMonth[month] ? 'dark' : 'light';
+};
+
+const themeSequence: ThemeMode[] = ['auto', 'light', 'dark'];
+
 // --- Components ---
 
 const Section = ({ id, title, children, className = "" }: { id: string; title: string; children: React.ReactNode; className?: string }) => (
@@ -74,7 +92,15 @@ const Section = ({ id, title, children, className = "" }: { id: string; title: s
   </section>
 );
 
-const Navbar = () => {
+const Navbar = ({
+  themeMode,
+  activeTheme,
+  onThemeToggle,
+}: {
+  themeMode: ThemeMode;
+  activeTheme: ActiveTheme;
+  onThemeToggle: () => void;
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -92,6 +118,8 @@ const Navbar = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const ThemeIcon = themeMode === 'auto' ? MonitorCog : activeTheme === 'dark' ? Moon : Sun;
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -116,13 +144,25 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Toggle */}
-        <button 
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onThemeToggle}
+            aria-label={`Theme: ${themeMode}`}
+            title={`Theme: ${themeMode}`}
+            className="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-xl border border-matcha-200 bg-white/70 text-matcha-800 shadow-sm backdrop-blur transition-all hover:border-matcha-400 hover:bg-matcha-50"
+          >
+            <ThemeIcon className="w-4 h-4" />
+          </button>
+
+          {/* Mobile Toggle */}
+          <button 
           className="md:hidden text-slate-600 p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -155,6 +195,36 @@ const Navbar = () => {
 
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [themeMode, setThemeMode] = useState<ThemeMode>('auto');
+  const [activeTheme, setActiveTheme] = useState<ActiveTheme>(getAutoTheme);
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('molly-theme-mode');
+    if (storedTheme === 'auto' || storedTheme === 'light' || storedTheme === 'dark') {
+      setThemeMode(storedTheme);
+    }
+  }, []);
+
+  useEffect(() => {
+    const applyTheme = () => {
+      const nextTheme = themeMode === 'auto' ? getAutoTheme() : themeMode;
+      setActiveTheme(nextTheme);
+      document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+      document.documentElement.dataset.themeMode = themeMode;
+      window.localStorage.setItem('molly-theme-mode', themeMode);
+    };
+
+    applyTheme();
+    const intervalId = window.setInterval(applyTheme, 60 * 1000);
+    return () => window.clearInterval(intervalId);
+  }, [themeMode]);
+
+  const handleThemeToggle = () => {
+    setThemeMode((currentMode) => {
+      const currentIndex = themeSequence.indexOf(currentMode);
+      return themeSequence[(currentIndex + 1) % themeSequence.length];
+    });
+  };
 
   const experiences: ExperienceItem[] = [
     {
@@ -245,7 +315,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans">
-      <Navbar />
+      <Navbar themeMode={themeMode} activeTheme={activeTheme} onThemeToggle={handleThemeToggle} />
 
       {/* Hero Section */}
       <header className="relative pt-32 pb-20 px-6 sm:px-12 lg:px-24 overflow-hidden">
