@@ -29,6 +29,7 @@ import waterlooMathLogo from './assets/waterloo-math-logo.png';
 import wicsLogo from './assets/wics-logo.png';
 import newChannelLogo from './assets/new-channel-logo.jpeg';
 import hunanChiyangLogo from './assets/hunan-chiyang-logo.jpg';
+import SkillsSection from './components/SkillsSection.jsx';
 import CertificateSection from './components/CertificateSection.jsx';
 
 // --- Types ---
@@ -115,6 +116,7 @@ const Navbar = ({
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Involvement', href: '#involvement' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -538,6 +540,7 @@ export default function App() {
 
       </Section>
 
+      <SkillsSection />
       <CertificateSection />
 
       {/* Contact Section */}
