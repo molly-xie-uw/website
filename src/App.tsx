@@ -15,9 +15,6 @@ import {
   MapPin, 
   Calendar, 
   BookOpen,
-  Code2,
-  Database,
-  Terminal,
   Layers,
   Menu,
   X,
@@ -31,7 +28,6 @@ import dscLogo from './assets/dsc-logo.png';
 import technovationLogo from './assets/technovation-logo.png';
 import waterlooMathLogo from './assets/waterloo-math-logo.png';
 import wicsLogo from './assets/wics-logo.png';
-import JadeDragonSkillPath from './components/JadeDragonSkillPath.jsx';
 import CertificateSection from './components/CertificateSection.jsx';
 
 // --- Types ---
@@ -116,7 +112,6 @@ const Navbar = ({
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Involvement', href: '#involvement' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -306,13 +301,6 @@ export default function App() {
     { org: "Women in Computer Science", role: "Volunteer & Judge", logoPath: wicsLogo, abbr: "WiCS" },
     { org: "Technovation Girls", role: "Volunteer & Judge", logoPath: technovationLogo, abbr: "TG" },
     { org: "Waterloo Math", role: "Math Open House Volunteer", logoPath: waterlooMathLogo, abbr: "Math" },
-  ];
-
-  const skills = [
-    { category: "Languages", items: ["Python", "C", "SQL", "R"], icon: <Terminal className="w-5 h-5" /> },
-    { category: "Web & Dev", items: ["React", "Vite", "Tailwind", "Express", "Firebase", "Streamlit"], icon: <Code2 className="w-5 h-5" /> },
-    { category: "Data & Analysis", items: ["Data Collection", "Data Analysis", "Statistical Reasoning", "EDA", "Excel"], icon: <Database className="w-5 h-5" /> },
-    { category: "Tools", items: ["Git", "GitHub", "Linux", "VS Code"], icon: <Layers className="w-5 h-5" /> },
   ];
 
   return (
@@ -543,7 +531,6 @@ export default function App() {
 
       </Section>
 
-      <JadeDragonSkillPath />
       <CertificateSection />
 
       {/* Contact Section */}
