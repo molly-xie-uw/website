@@ -32,6 +32,7 @@ import dscLogo from './assets/dsc-logo.png';
 import technovationLogo from './assets/technovation-logo.png';
 import waterlooMathLogo from './assets/waterloo-math-logo.png';
 import wicsLogo from './assets/wics-logo.png';
+import JadeDragonSkillPath from './components/JadeDragonSkillPath.jsx';
 
 // --- Types ---
 
@@ -552,32 +553,7 @@ export default function App() {
         </div>
       </Section>
 
-      {/* Skills Section */}
-      <Section id="skills" title="Skills & Tools">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skillGroup, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass-card p-8 border-b-4 border-b-matcha-400"
-            >
-              <div className="flex items-center gap-3 mb-6 text-matcha-600">
-                {skillGroup.icon}
-                <h3 className="font-display font-bold text-lg text-slate-800">{skillGroup.category}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {skillGroup.items.map(skill => (
-                  <span key={skill} className="px-3 py-1 bg-slate-50 text-slate-600 text-sm rounded-lg border border-slate-100 hover:border-matcha-200 hover:bg-white transition-all cursor-default">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+      <JadeDragonSkillPath />
 
       {/* Contact Section */}
       <Section id="contact" title="Get In Touch" className="pb-32">
