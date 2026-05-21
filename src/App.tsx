@@ -14,7 +14,6 @@ import {
   ChevronRight, 
   MapPin, 
   Calendar, 
-  Award,
   BookOpen,
   Code2,
   Database,
@@ -541,18 +540,7 @@ export default function App() {
             </motion.div>
           ))}
         </div>
-        
-        <div className="mt-16 glass-card p-8 flex flex-col md:flex-row items-center gap-8 justify-center bg-white shadow-md">
-          <div className="p-4 bg-yellow-50 text-yellow-600 rounded-2xl">
-            <Award className="w-10 h-10" />
-          </div>
-          <div className="text-center md:text-left">
-            <h3 className="font-display font-bold text-2xl text-slate-800">Honors & Awards</h3>
-            <p className="text-slate-600 mt-2 max-w-xl">
-              <span className="font-bold text-matcha-700">University of Waterloo President’s Scholarship of Distinction</span> — Awarded to students admitted with an admission average of 95% or above.
-            </p>
-          </div>
-        </div>
+
       </Section>
 
       <JadeDragonSkillPath />
