@@ -24,6 +24,11 @@ import {
   X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import cscLogo from './assets/csc-logo.png';
+import dscLogo from './assets/dsc-logo.png';
+import technovationLogo from './assets/technovation-logo.png';
+import waterlooMathLogo from './assets/waterloo-math-logo.png';
+import wicsLogo from './assets/wics-logo.png';
 
 // --- Types ---
 
@@ -224,11 +229,11 @@ export default function App() {
   ];
 
   const involvements: InvolvementItem[] = [
-    { org: "Computer Science Club", role: "Event Coordinator", logoPath: "/src/assets/csc-logo.png", abbr: "CSC" },
-    { org: "Data Science Club", role: "Event Coordinator", logoPath: "/src/assets/dsc-logo.png", abbr: "DSC" },
-    { org: "Women in Computer Science", role: "Volunteer & Judge", logoPath: "/src/assets/wics-logo.png", abbr: "WiCS" },
-    { org: "Technovation Girls", role: "Volunteer & Judge", logoPath: "/src/assets/technovation-logo.png", abbr: "TG" },
-    { org: "Waterloo Math", role: "Math Open House Volunteer", logoPath: "/src/assets/waterloo-math-logo.png", abbr: "Math" },
+    { org: "Computer Science Club", role: "Event Coordinator", logoPath: cscLogo, abbr: "CSC" },
+    { org: "Data Science Club", role: "Event Coordinator", logoPath: dscLogo, abbr: "DSC" },
+    { org: "Women in Computer Science", role: "Volunteer & Judge", logoPath: wicsLogo, abbr: "WiCS" },
+    { org: "Technovation Girls", role: "Volunteer & Judge", logoPath: technovationLogo, abbr: "TG" },
+    { org: "Waterloo Math", role: "Math Open House Volunteer", logoPath: waterlooMathLogo, abbr: "Math" },
   ];
 
   const skills = [
