@@ -33,6 +33,7 @@ import technovationLogo from './assets/technovation-logo.png';
 import waterlooMathLogo from './assets/waterloo-math-logo.png';
 import wicsLogo from './assets/wics-logo.png';
 import JadeDragonSkillPath from './components/JadeDragonSkillPath.jsx';
+import CertificateSection from './components/CertificateSection.jsx';
 
 // --- Types ---
 
@@ -117,6 +118,7 @@ const Navbar = ({
     { name: 'Projects', href: '#projects' },
     { name: 'Involvement', href: '#involvement' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -554,6 +556,7 @@ export default function App() {
       </Section>
 
       <JadeDragonSkillPath />
+      <CertificateSection />
 
       {/* Contact Section */}
       <Section id="contact" title="Get In Touch" className="pb-32">
