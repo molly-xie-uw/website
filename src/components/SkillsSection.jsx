@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import DragonRunModal from './DragonRunModal.jsx';
-
 const skills = [
   { category: 'Languages', items: ['Python', 'C', 'SQL'] },
   { category: 'Web & Apps', items: ['React', 'Streamlit', 'Firebase'] },
@@ -9,8 +6,6 @@ const skills = [
 ];
 
 export default function SkillsSection() {
-  const [isGameOpen, setIsGameOpen] = useState(false);
-
   return (
     <section id="skills" className="section-padding bg-[#F6F1E7]">
       <div className="mx-auto max-w-6xl">
@@ -36,18 +31,7 @@ export default function SkillsSection() {
             </article>
           ))}
         </div>
-
-        <div className="mt-8 rounded-3xl border border-slate-100 bg-white/80 p-5 shadow-sm md:flex md:items-center md:justify-between md:gap-6">
-          <div>
-            <p className="font-semibold text-slate-800">A small easter egg</p>
-            <p className="mt-1 text-sm text-slate-500">A tiny skill game inspired by the simple games I play to unwind.</p>
-          </div>
-          <button type="button" onClick={() => setIsGameOpen(true)} className="mt-4 rounded-xl bg-matcha-700 px-5 py-3 text-sm font-bold text-white shadow-md shadow-matcha-200 transition hover:bg-matcha-800 md:mt-0">
-            Try the hidden dragon run
-          </button>
-        </div>
       </div>
-      <DragonRunModal open={isGameOpen} onClose={() => setIsGameOpen(false)} />
     </section>
   );
 }
