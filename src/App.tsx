@@ -27,6 +27,8 @@ import dscLogo from './assets/dsc-logo.png';
 import technovationLogo from './assets/technovation-logo.png';
 import waterlooMathLogo from './assets/waterloo-math-logo.png';
 import wicsLogo from './assets/wics-logo.png';
+import newChannelLogo from './assets/new-channel-logo.jpeg';
+import hunanChiyangLogo from './assets/hunan-chiyang-logo.jpg';
 import CertificateSection from './components/CertificateSection.jsx';
 
 // --- Types ---
@@ -45,6 +47,8 @@ interface ExperienceItem {
   company: string;
   period: string;
   description: string[];
+  logoPath?: string;
+  logoAlt?: string;
 }
 
 interface InvolvementItem {
@@ -226,6 +230,8 @@ export default function App() {
       role: "Research Mentee, Quantitative Finance Project",
       company: "Women in Math Directed Reading/Research Program, UWaterloo",
       period: "May 2026 – Aug 2026",
+      logoPath: waterlooMathLogo,
+      logoAlt: "University of Waterloo logo",
       description: [
         "Conducting quantitative analysis of entry and exit strategies using historical stock and ETF data from the Yahoo Finance API.",
         "Developing Python-based backtesting pipelines for SMA, EMA, RSI, and MACD using return, Sharpe ratio, and drawdown.",
@@ -236,6 +242,8 @@ export default function App() {
       role: "Administrative Assistant",
       company: "Hunan Chiyang Information Technology Co., Ltd.",
       period: "Dec 2024 – Jan 2025",
+      logoPath: hunanChiyangLogo,
+      logoAlt: "Hunan Chiyang logo",
       description: [
         "Screened 50+ resumes and maintained applicant tracking system, reducing processing time for HR team.",
         "Maintained and updated applicant tracking spreadsheets in Excel, improving accuracy and consistency of records.",
@@ -247,6 +255,8 @@ export default function App() {
       role: "Teaching Assistant",
       company: "New Channel International Education Group",
       period: "Jul 2024 – Sep 2024",
+      logoPath: newChannelLogo,
+      logoAlt: "New Channel logo",
       description: [
         "Instructed 30+ students in IELTS and A-Level STEM subjects across 6 daily classes, with 80% achieving target scores.",
         "Prepared written feedback and progress reports, summarizing student performance and actionable recommendations.",
@@ -414,7 +424,12 @@ export default function App() {
               
               <div className="w-full md:w-1/2">
                 <div className="glass-card p-8 hover:shadow-md hover:border-matcha-200">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-start gap-4 mb-4">
+                    {exp.logoPath && (
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-white p-2 shadow-sm overflow-hidden">
+                        <img src={exp.logoPath} alt={exp.logoAlt || exp.company} className="h-full w-full object-contain" />
+                      </div>
+                    )}
                     <div>
                       <h3 className="font-display font-bold text-xl text-slate-800">{exp.role}</h3>
                       <p className="text-matcha-700 font-medium">{exp.company}</p>
