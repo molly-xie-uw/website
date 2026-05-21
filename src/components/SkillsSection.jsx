@@ -1,8 +1,8 @@
 const skills = [
-  { category: 'Languages', items: ['Python', 'C', 'SQL'] },
-  { category: 'Web & Apps', items: ['React', 'Streamlit', 'Firebase'] },
-  { category: 'Tools', items: ['Git', 'GitHub', 'Linux'] },
-  { category: 'Focus Areas', items: ['Data Analysis', 'SOA Exam P', 'Responsible AI'] },
+  { category: 'Languages', items: ['Python', 'C', 'SQL', 'R', 'JavaScript/TypeScript'] },
+  { category: 'Web & Apps', items: ['React', 'Streamlit', 'Firebase', 'Vite', 'Tailwind CSS', 'Vercel'] },
+  { category: 'Tools', items: ['Git', 'GitHub', 'Linux', 'VS Code', 'Figma', 'LaTeX'] },
+  { category: 'Focus Areas', items: ['Data Analysis', 'Data Visualization', 'Probability', 'SOA Exam P', 'Responsible AI', 'Computer Vision'] },
 ];
 
 export default function SkillsSection() {
