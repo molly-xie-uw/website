@@ -13,13 +13,13 @@ const credentials = [
 
 export default function CertificateSection() {
   return (
-    <section id="certificates" className="section-padding bg-[#FFFDF8] text-[#40483F]">
+    <section id="certificates" className="section-padding bg-slate-50/50">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#6F8A72]">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-matcha-700">
             Credentials
           </p>
-          <h2 className="font-display text-3xl font-bold text-[#40483F] md:text-4xl">
+          <h2 className="font-display text-3xl font-bold text-slate-800 md:text-4xl">
             Certificates & Honors
           </h2>
         </div>
@@ -28,14 +28,14 @@ export default function CertificateSection() {
           {credentials.map((item) => (
             <article
               key={item.title}
-              className="rounded-3xl border border-[#CFC3B0]/80 bg-[#F6F1E7] p-6 shadow-[0_16px_40px_rgba(64,72,63,0.08)] transition duration-200 hover:border-[#6F8A72]/55 hover:shadow-[0_18px_44px_rgba(64,72,63,0.12)]"
+              className="glass-card p-6 border border-slate-100 bg-white transition duration-200 hover:-translate-y-0.5 hover:border-matcha-400 hover:shadow-md"
             >
-              <div className="mb-4 h-1.5 w-12 rounded-full bg-[#6F8A72]" />
-              <h3 className="font-display text-xl font-bold leading-snug text-[#40483F]">
+              <div className="mb-4 h-1.5 w-12 rounded-full bg-matcha-600" />
+              <h3 className="font-display text-xl font-bold leading-snug text-slate-800">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm font-semibold text-[#506654]">{item.meta}</p>
-              <p className="mt-4 text-sm leading-6 text-[#5f665d]">{item.description}</p>
+              <p className="mt-2 text-sm font-semibold text-matcha-700">{item.meta}</p>
+              <p className="mt-4 text-sm leading-6 text-slate-600">{item.description}</p>
             </article>
           ))}
         </div>
