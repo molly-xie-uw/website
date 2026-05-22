@@ -8,7 +8,6 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  Download, 
   ExternalLink, 
   ChevronRight, 
   MapPin, 
@@ -343,15 +342,8 @@ export default function App() {
             </h2>
 
             <div className="flex flex-wrap gap-4 mt-10">
-              <a 
-                href="/resume.pdf" 
-                download
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3 rounded-xl font-semibold transition-all shadow-sm"
-              >
-                <Download className="w-4 h-4" /> Download
-              </a>
 
-              <div className="flex items-center gap-3 ml-2">
+              <div className="flex items-center gap-3">
                 <a href="https://github.com/molly-xie-uw" target="_blank" className="p-3 bg-white border border-slate-100 rounded-xl hover:border-matcha-300 hover:text-matcha-600 transition-all shadow-sm">
                   <Github className="w-5 h-5" />
                 </a>
