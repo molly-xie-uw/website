@@ -289,7 +289,7 @@ export default function App() {
         "Physical Diff method tracking movement",
         "Privacy-preserving search via embeddings"
       ],
-      github: "https://github.com/molly-xie-uw/spatialvcs",
+      github: "https://github.com/magicalcatboss/portfolio",
     },
     {
       title: "SleepMatch",
